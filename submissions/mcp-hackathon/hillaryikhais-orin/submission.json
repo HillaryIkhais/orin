@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "ORIN — capability admission backed by execution",
+  "slug": "hillaryikhais-orin",
+  "sourceRepository": "https://github.com/HillaryIkhais/orin",
+  "reviewCommit": "ad71aec987e38aea9ef98039aadbc69fc40d672c",
+  "apiBaseUrl": "https://TODO_DEPLOY_URL",
+  "healthCheckUrl": "https://TODO_DEPLOY_URL/health",
+  "deploymentProofUrl": "https://TODO_DEPLOY_URL/.well-known/xagent-verification.json"
+}
