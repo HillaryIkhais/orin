@@ -22,7 +22,7 @@ WORLD CHANGES -> EVIDENCE INVALIDATED -> DECISION REVALIDATED -> ACTION BLOCKED
 | `POST /inspect` (`recon.inspect`) | task-conditioned semantic diff (v1 capability, kept) |
 | `POST /mcp` | JSON-RPC `tools/list` + `tools/call` for all of the above |
 
-Verdicts are **deterministic** — no LLM in the verdict path (I8). Unknown fails closed (I6).
+Verdicts are **repeatable (no LLM judge)** — no LLM in the verdict path (I8). Unknown fails closed (I6).
 
 ## Demo (60 seconds)
 
