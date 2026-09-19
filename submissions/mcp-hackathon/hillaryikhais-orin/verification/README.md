@@ -1,13 +1,13 @@
 # Verification evidence — ORIN
 
 - Review commit: `ad71aec987e38aea9ef98039aadbc69fc40d672c`
-- API base URL: `https://TODO_DEPLOY_URL`
+- API base URL: `https://orin-md60.onrender.com`
 - Authentication: none (public)
 
 ## 1. Health check
 
 ```bash
-curl --fail --silent --show-error https://TODO_DEPLOY_URL/health
+curl --fail --silent --show-error https://orin-md60.onrender.com/health
 ```
 
 Expected response:
@@ -19,7 +19,7 @@ Expected response:
 ## 2. Deployment proof
 
 ```bash
-curl --fail --silent --show-error https://TODO_DEPLOY_URL/.well-known/xagent-verification.json
+curl --fail --silent --show-error https://orin-md60.onrender.com/.well-known/xagent-verification.json
 ```
 
 Expected response:
@@ -32,7 +32,7 @@ Expected response:
 
 ```bash
 curl --fail --silent --show-error \
-  --request POST https://TODO_DEPLOY_URL/capabilities/declare \
+  --request POST https://orin-md60.onrender.com/capabilities/declare \
   --header "content-type: application/json" \
   --data '{"agent_id":"agent-X","version":"v1","code":"det-v1","model":"m1","prompt":"p1","tools":["read"],"skills":["dup"],"config":{},"env":"prod"}'
 ```
@@ -40,10 +40,10 @@ curl --fail --silent --show-error \
 then
 
 ```bash
-EV=$(curl -fsS -X POST https://TODO_DEPLOY_URL/evaluations/create \
+EV=$(curl -fsS -X POST https://orin-md60.onrender.com/evaluations/create \
   -H "content-type: application/json" -d '{"agent_id":"agent-X","capability":"invoice.duplicate_detection"}' \
   | python3 -c "import json,sys;print(json.load(sys.stdin)['eval_id'])")
-curl -fsS -X POST https://TODO_DEPLOY_URL/evaluations/run \
+curl -fsS -X POST https://orin-md60.onrender.com/evaluations/run \
   -H "content-type: application/json" -d "{\"eval_id\":\"$EV\"}"
 ```
 
@@ -52,9 +52,9 @@ Expected success: `{"status":"VERIFIED","summary":{...,"passed":50,...}}` with `
 Safe failure response (unknown capability):
 
 ```bash
-curl -fsS https://TODO_DEPLOY_URL/capabilities/ghost/nonexistent.cap/status
+curl -fsS https://orin-md60.onrender.com/capabilities/ghost/nonexistent.cap/status
 ```
 
 Expected: `{"status":"UNPROVEN","reason":"NO_SUCH_CAPABILITY",...}` — fail-closed, never `VERIFIED`.
 
-Automation: `verification/orin-smoke.sh https://TODO_DEPLOY_URL` runs all of the above and asserts the health/verification responses. Live output captured at submission time in `verification/smoke-output.txt`.
+Automation: `verification/orin-smoke.sh https://orin-md60.onrender.com` runs all of the above and asserts the health/verification responses. Live output captured at submission time in `verification/smoke-output.txt`.

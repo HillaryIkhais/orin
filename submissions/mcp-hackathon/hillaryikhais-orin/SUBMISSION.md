@@ -12,8 +12,8 @@
 
 ## Live API
 
-- **API base URL:** https://TODO_DEPLOY_URL
-- **Health-check URL:** https://TODO_DEPLOY_URL/health
+- **API base URL:** https://orin-md60.onrender.com
+- **Health-check URL:** https://orin-md60.onrender.com/health
 - **Authentication:** none (public read + capability lifecycle is idempotent and evidence-bound)
 - **Rate limits / known limits:** none configured; evaluation is deterministic and CPU-only
 - **API contract:** `docs/orin-api.md` in `source/`; interactive OpenAPI at `/docs` on the live origin.
